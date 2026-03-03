@@ -47,3 +47,19 @@
   - **RedwoodSDK**: Integrates Redwood SDK for a more opinionated, full-stack oriented experience.
   - **Vike**: Uses Vike meta-framework on top of React/Vite to support flexible SSR/SPA patterns.
 
+- **Docker persistence options**
+  - **Named volumes** (what the Postgres service uses now)
+    - Syntax: `todo-postgres-data:/var/lib/postgresql/data` plus a `volumes:` section defining `todo-postgres-data:`.
+    - Data lives outside the container’s filesystem in Docker-managed storage and survives container rebuilds.
+    - Great default for databases where you don’t need to inspect files directly.
+  - **Bind mounts (host directories)**
+    - Syntax: `./db-data:/var/lib/postgresql/data`.
+    - Maps a real directory on the host into the container; you can see and manipulate the files directly.
+    - Useful for source code hot-reload or when you need direct file inspection, but more OS/permission sensitive.
+  - **tmpfs mounts (in-memory)**
+    - Mounts that live only in RAM; data disappears when the container stops.
+    - Good for ephemeral caches or sensitive data that should never hit disk, not for long-term DB storage.
+  - **External / managed databases**
+    - Instead of running Postgres in Docker, point your app at a database running on the host or a managed cloud service.
+    - Makes the app containers stateless; persistence is handled entirely outside Docker.
+
