@@ -9,16 +9,17 @@ from app.schemas.user import UserCreate
 
 
 def get_user(db: Session, user_id) -> Optional[User]:
-    return db.get(User, user_id)
+    stmt = select(User).where(User.id == user_id, User.is_deleted.is_(False))
+    return db.scalar(stmt)
 
 
 def get_user_by_email(db: Session, email: str) -> Optional[User]:
-    stmt = select(User).where(User.email == email)
+    stmt = select(User).where(User.email == email, User.is_deleted.is_(False))
     return db.scalar(stmt)
 
 
 def get_users(db: Session, skip: int = 0, limit: int = 100) -> Iterable[User]:
-    stmt = select(User).offset(skip).limit(limit)
+    stmt = select(User).where(User.is_deleted.is_(False)).offset(skip).limit(limit)
     return db.scalars(stmt).all()
 
 
@@ -34,4 +35,10 @@ def create_user(db: Session, user_in: UserCreate) -> User:
     db.commit()
     db.refresh(db_user)
     return db_user
+
+
+def soft_delete_user(db: Session, user: User) -> None:
+    user.is_deleted = True
+    db.add(user)
+    db.commit()
 
