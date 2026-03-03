@@ -1,0 +1,10 @@
+/.cursor/
+__pycache__/
+*.py[cod]
+.venv/
+env/
+venv/
+node_modules/
+dist/
+build/
+*.log
