@@ -1,0 +1,10 @@
+__pycache__/
+*.py[cod]
+.venv/
+env/
+venv/
+.mypy_cache/
+.pytest_cache/
+.git/
+.cursor/
+
