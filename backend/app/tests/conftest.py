@@ -29,8 +29,9 @@ def override_get_db() -> Generator[Session, None, None]:
         db.close()
 
 
-@pytest.fixture(scope="session", autouse=True)
-def prepare_database() -> None:
+@pytest.fixture(autouse=True)
+def reset_database() -> None:
+    """Reset the database before each test so tests are isolated."""
     Base.metadata.drop_all(bind=engine)
     Base.metadata.create_all(bind=engine)
 
