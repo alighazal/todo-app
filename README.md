@@ -19,8 +19,6 @@ This project is a learning-focused **Todo application** with a clear separation 
   - `env/` – Environment files for each service (`backend.env`, `frontend.env`, `db.env`).
 - `learning-notes/`
   - Markdown notes capturing concepts learned (Docker, React tooling, etc.).
-- `.cursor/plans/`
-  - Internal planning docs for the project (ignored by git).
 
 ### Running the stack
 
@@ -32,7 +30,7 @@ docker compose up --build
 ```
 
 Services:
-- **Backend**: `http://localhost:8000` (test with `GET /hello`)
+- **Backend**: `http://localhost:8000`
 - **Frontend**: `http://localhost:3000`
 - **Postgres**: `localhost:5432` (internal DB name `todo_app`)
 
@@ -46,7 +44,7 @@ pip install -r requirements.txt
 uvicorn app.main:app --reload
 ```
 
-Then open `http://localhost:8000/hello` in your browser.
+Then open `http://localhost:8000/docs` in your browser.
 
 ### Project goals
 
