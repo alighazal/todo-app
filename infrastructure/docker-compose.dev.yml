@@ -1,0 +1,9 @@
+# Development override: mount frontend source so changes on the host trigger reload.
+# Run: docker compose -f docker-compose.yml -f docker-compose.dev.yml up --build
+
+services:
+  frontend:
+    volumes:
+      - ../frontend:/app
+      # Keep container's node_modules (don't overwrite with host)
+      - /app/node_modules
