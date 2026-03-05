@@ -34,6 +34,17 @@ Services:
 - **Frontend**: `http://localhost:3000`
 - **Postgres**: `localhost:5432` (internal DB name `todo_app`)
 
+### Development with live reload (frontend)
+
+To run the full stack with the frontend source mounted so edits on your machine trigger a reload in the browser:
+
+```bash
+cd infrastructure
+docker compose -f docker-compose.yml -f docker-compose.dev.yml up --build
+```
+
+The frontend container uses the same image but mounts `../frontend` into the app directory and keeps `node_modules` from the image, so Vite sees file changes and HMR works when you open `http://localhost:3000`.
+
 ### Local development (backend only)
 
 ```bash
