@@ -15,6 +15,7 @@ import {
   IconSearch,
   IconSettings,
   IconUsers,
+  IconListCheckFilled,
 } from "@tabler/icons-react"
 
 import { NavDocuments } from "@/components/nav-documents"
@@ -39,30 +40,10 @@ const data = {
   },
   navMain: [
     {
-      title: "Dashboard",
-      url: "#",
-      icon: IconDashboard,
-    },
-    {
-      title: "Lifecycle",
-      url: "#",
-      icon: IconListDetails,
-    },
-    {
-      title: "Analytics",
-      url: "#",
-      icon: IconChartBar,
-    },
-    {
-      title: "Projects",
+      title: "Default Project",
       url: "#",
       icon: IconFolder,
-    },
-    {
-      title: "Team",
-      url: "#",
-      icon: IconUsers,
-    },
+    }
   ],
   navClouds: [
     {
@@ -131,20 +112,10 @@ const data = {
   ],
   documents: [
     {
-      name: "Data Library",
+      name: "Todo List",
       url: "#",
-      icon: IconDatabase,
-    },
-    {
-      name: "Reports",
-      url: "#",
-      icon: IconReport,
-    },
-    {
-      name: "Word Assistant",
-      url: "#",
-      icon: IconFileWord,
-    },
+      icon: IconListCheckFilled,
+    }
   ],
 }
 
