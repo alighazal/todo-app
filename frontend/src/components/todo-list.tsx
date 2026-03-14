@@ -23,7 +23,7 @@ export function TodoList({
   }
 
   return (
-    <div className="flex w-full flex-col gap-3 px-4 lg:px-6">
+    <div className="flex w-full max-h-[calc(100vh-13rem)] flex-col gap-3 overflow-y-auto px-4 lg:px-6">
       {todos.map((todo) => (
         <TodoItem
           key={todo.id}
